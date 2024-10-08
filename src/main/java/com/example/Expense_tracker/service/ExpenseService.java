@@ -4,8 +4,7 @@ import com.example.Expense_tracker.dto.ExpenseDto;
 
 import com.example.Expense_tracker.entity.Expense;
 
-import com.example.Expense_tracker.exception.ExpenseException;
-
+import com.example.Expense_tracker.exception.ResourceNotFoundException;
 import com.example.Expense_tracker.repository.ExpenseRepository;
 
 import java.util.List;
@@ -27,6 +26,6 @@ public interface ExpenseService {
     default Expense findExpenseById(ExpenseRepository expenseRepository, Long id) {
         return expenseRepository
                 .findById(id)
-                .orElseThrow(() -> new ExpenseException("Expense does not exist."));
+                .orElseThrow(() -> new ResourceNotFoundException("Expense does not exist."));
     }
 }
