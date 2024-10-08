@@ -1,10 +1,11 @@
-package com.example.Expense_tracker.service;
+package com.example.Expense_tracker.service.implementation;
 
 import com.example.Expense_tracker.mapper.CategoryMapper;
 import com.example.Expense_tracker.dto.CategoryDto;
 import com.example.Expense_tracker.entity.Category;
 import com.example.Expense_tracker.repository.CategoryRepository;
 
+import com.example.Expense_tracker.service.CategoryService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
