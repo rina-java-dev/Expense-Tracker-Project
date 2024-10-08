@@ -3,6 +3,7 @@ package com.example.Expense_tracker.service.implementation;
 import com.example.Expense_tracker.dto.ExpenseDto;
 import com.example.Expense_tracker.entity.Category;
 import com.example.Expense_tracker.entity.Expense;
+import com.example.Expense_tracker.exception.ResourceNotFoundException;
 import com.example.Expense_tracker.mapper.ExpenseMapper;
 import com.example.Expense_tracker.repository.CategoryRepository;
 import com.example.Expense_tracker.repository.ExpenseRepository;
@@ -48,7 +49,7 @@ public class ExpenseServiceImpl implements ExpenseService {
         expense.setExpenseDate(expenseDto.expenseDate());
         if (expenseDto.category() != null) {
             Category category = categoryRepository.findById(expenseDto.category().id())
-                    .orElseThrow(() -> new RuntimeException("Category not found"));
+                    .orElseThrow(() -> new ResourceNotFoundException("Category not found"));
             expense.setCategory(category);
         }
         Expense updatedExpense = expenseRepository.save(expense);

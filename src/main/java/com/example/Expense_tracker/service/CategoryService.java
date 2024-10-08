@@ -2,7 +2,7 @@ package com.example.Expense_tracker.service;
 
 import com.example.Expense_tracker.dto.CategoryDto;
 import com.example.Expense_tracker.entity.Category;
-import com.example.Expense_tracker.exception.CategoryException;
+import com.example.Expense_tracker.exception.ResourceNotFoundException;
 import com.example.Expense_tracker.repository.CategoryRepository;
 
 import java.util.List;
@@ -27,6 +27,6 @@ public interface CategoryService {
     default Category findCategoryById(CategoryRepository categoryRepository, Long id) {
         return categoryRepository
                 .findById(id)
-                .orElseThrow(() -> new CategoryException("Category does not exist."));
+                .orElseThrow(() -> new ResourceNotFoundException("Category does not exist."));
     }
 }
